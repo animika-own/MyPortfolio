@@ -72,11 +72,12 @@ const Dashboard = () => {
       {/* HEADER */}
       <Box sx={{ mb: 5 }}>
         <Typography variant="h4" sx={{ fontWeight: 800 }}>
-          Dashboard Overview
+          Portfolio Admin Dashboard
         </Typography>
 
         <Typography color="text.secondary">
-          Manage your portfolio system at a glance
+          A full-stack portfolio system to manage skills, projects, experience
+          and resume
         </Typography>
       </Box>
 
@@ -158,7 +159,8 @@ const Dashboard = () => {
         }}
       >
         <Typography variant="body2">
-          React + Laravel Portfolio System • Admin Dashboard UI
+          Built by Animika Das • A personal project to showcase practical
+          development skills
         </Typography>
       </Box>
     </Box>

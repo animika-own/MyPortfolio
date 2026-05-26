@@ -33,47 +33,105 @@ const Login = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        bgcolor: "#f4f6f8",
+        background: "linear-gradient(135deg, #0f172a, #1e293b)",
+        px: 2,
       }}
     >
-      <Card sx={{ width: 400, p: 2, borderRadius: 3 }}>
+      {/* MAIN CARD */}
+      <Card
+        sx={{
+          width: 420,
+          borderRadius: 4,
+          p: 2,
+          boxShadow: "0 20px 60px rgba(0,0,0,0.4)",
+        }}
+      >
         <CardContent>
-          <Typography variant="h4" sx={{ textAlign: "center", mb: 3 }}>
-            Admin Login
-          </Typography>
+          {/* HEADER */}
+          <Box sx={{ textAlign: "center", mb: 3 }}>
+            <Typography variant="h4" sx={{ fontWeight: 800 }}>
+              Animika Das
+            </Typography>
 
+            <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+              Portfolio Management System • React + Laravel
+            </Typography>
+          </Box>
+
+          {/* EMAIL */}
           <TextField
-            label="email"
+            label="Email"
             fullWidth
             margin="normal"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                borderRadius: 2,
+              },
+            }}
           />
 
+          {/* PASSWORD */}
           <TextField
-            label="password"
+            label="Password"
             type="password"
             fullWidth
             margin="normal"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                borderRadius: 2,
+              },
+            }}
           />
 
+          {/* LOGIN BUTTON */}
           <Button
-            variant="contained"
             fullWidth
-            sx={{ mt: 3 }}
             onClick={handleLogin}
+            sx={{
+              mt: 3,
+              py: 1.5,
+              fontWeight: 600,
+              textTransform: "none",
+              borderRadius: 2,
+              color: "#fff",
+              background: "linear-gradient(135deg, #0f172a, #334155)",
+              boxShadow: "0 8px 20px rgba(15, 23, 42, 0.35)",
+              transition: "0.3s ease",
+              "&:hover": {
+                background: "linear-gradient(135deg, #1e293b, #0f172a)",
+                transform: "translateY(-2px)",
+              },
+            }}
           >
-            Login
+            Sign In
           </Button>
 
+          {/* DIVIDER TEXT */}
+          <Typography
+            variant="body2"
+            sx={{ textAlign: "center", mt: 2, color: "text.secondary" }}
+          >
+            Don’t have an account?
+          </Typography>
+
+          {/* REGISTER */}
           <Button
-            variant="text"
             fullWidth
             component={Link}
             to="/register"
-            sx={{ mt: 1 }}
+            sx={{
+              mt: 1,
+              textTransform: "none",
+              fontWeight: 600,
+              color: "#0f172a",
+              "&:hover": {
+                background: "#f1f5f9",
+              },
+            }}
           >
             Create Account
           </Button>

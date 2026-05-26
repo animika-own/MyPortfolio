@@ -95,7 +95,7 @@ const Layout = () => {
           </IconButton>
 
           <Typography variant="h5" sx={{ flexGrow: 1, fontWeight: 600 }}>
-            Portfolio Admin
+            Animika Build Studio
           </Typography>
 
           <Button
