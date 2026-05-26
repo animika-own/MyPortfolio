@@ -106,4 +106,12 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 
+
+Route::get('/clear-everything', function () {
+    \Artisan::call('config:clear');
+    \Artisan::call('cache:clear');
+    \Artisan::call('route:clear');
+    return "All caches have been successfully cleared!";
+});
+
 ?>

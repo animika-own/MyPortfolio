@@ -1,17 +1,16 @@
 <?php
 
 return [
-    'paths' => ['api/*', '*'],
+    'paths' => ['api/*', 'login', 'register'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => [
+        'https://animika-portfolio.web.app',
+        'https://animika-portfolio.firebaseapp.com'
+    ],
 
     'allowed_headers' => ['*'],
 
-    'exposed_headers' => [],
-
-    'max_age' => 0,
-
-    'supports_credentials' => false,
+    'supports_credentials' => true,
 ];
