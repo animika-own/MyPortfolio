@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 # MyPortfolio
 # Full Stack Web Application (Laravel + React)
 
@@ -30,3 +32,4 @@ A full-stack web application built using **Laravel (Backend)** and **React JS (F
 ## 📁 Project Structure
 /backend → Laravel API
 /frontend → React JS UI
+
