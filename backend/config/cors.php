@@ -6,7 +6,7 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
-        'https://myportfolio-animika.web.app',
+        'https://animika-portfolio.web.app',
     ],
 
     'allowed_headers' => ['*'],
