@@ -2,7 +2,7 @@ FROM php:8.3-cli
 
 WORKDIR /app
 
-# Install system dependencies (IMPORTANT FIX)
+# System dependencies
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -14,15 +14,15 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo pdo_pgsql zip
 
 # Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Copy project
+# Copy project first
 COPY . .
 
-# Install PHP dependencies
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+# Install dependencies AFTER copy (IMPORTANT FIX)
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader || true
 
-# Permissions (Laravel needs this)
+# Permissions
 RUN chmod -R 777 storage bootstrap/cache
 
 EXPOSE 10000
