@@ -1,4 +1,11 @@
-import { Box, Card, CardContent, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  Grid,
+  Typography,
+  CircularProgress,
+} from "@mui/material";
 
 import { useEffect, useState } from "react";
 import api from "../services/api";
@@ -12,6 +19,8 @@ const Dashboard = () => {
     training: 0,
     certifications: 0,
   });
+
+  const [loading, setLoading] = useState(true);
 
   const fetchData = async () => {
     try {
@@ -41,6 +50,8 @@ const Dashboard = () => {
       });
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -55,11 +66,40 @@ const Dashboard = () => {
     boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
     transition: "0.3s",
     cursor: "pointer",
+    minHeight: 180,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
     "&:hover": {
       transform: "translateY(-6px)",
       boxShadow: "0 18px 35px rgba(0,0,0,0.2)",
     },
   });
+
+  const renderContent = (title: string, value: number, loadingText: string) => {
+    if (loading) {
+      return (
+        <Box sx={{ textAlign: "center" }}>
+          <CircularProgress sx={{ color: "#fff", mb: 2 }} />
+
+          <Typography variant="body1" sx={{ fontWeight: 600 }}>
+            {loadingText}
+          </Typography>
+        </Box>
+      );
+    }
+
+    return (
+      <>
+        <Typography variant="subtitle1">{title}</Typography>
+
+        <Typography variant="h3" sx={{ fontWeight: 700 }}>
+          {value}
+        </Typography>
+      </>
+    );
+  };
 
   return (
     <Box
@@ -86,10 +126,11 @@ const Dashboard = () => {
         <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <Card sx={cardStyle("#4facfe, #00f2fe")}>
             <CardContent>
-              <Typography variant="subtitle1">Skills</Typography>
-              <Typography variant="h3" sx={{ fontWeight: 700 }}>
-                {counts.skills}
-              </Typography>
+              {renderContent(
+                "Skills",
+                counts.skills,
+                "Loading technical skills..."
+              )}
             </CardContent>
           </Card>
         </Grid>
@@ -97,10 +138,11 @@ const Dashboard = () => {
         <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <Card sx={cardStyle("#43e97b, #38f9d7")}>
             <CardContent>
-              <Typography variant="subtitle1">Projects</Typography>
-              <Typography variant="h3" sx={{ fontWeight: 700 }}>
-                {counts.projects}
-              </Typography>
+              {renderContent(
+                "Projects",
+                counts.projects,
+                "Fetching awesome projects..."
+              )}
             </CardContent>
           </Card>
         </Grid>
@@ -108,10 +150,11 @@ const Dashboard = () => {
         <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <Card sx={cardStyle("#fa709a, #fee140")}>
             <CardContent>
-              <Typography variant="subtitle1">Education</Typography>
-              <Typography variant="h3" sx={{ fontWeight: 700 }}>
-                {counts.education}
-              </Typography>
+              {renderContent(
+                "Education",
+                counts.education,
+                "Loading academic journey..."
+              )}
             </CardContent>
           </Card>
         </Grid>
@@ -119,10 +162,11 @@ const Dashboard = () => {
         <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <Card sx={cardStyle("#a18cd1, #fbc2eb")}>
             <CardContent>
-              <Typography variant="subtitle1">Experience</Typography>
-              <Typography variant="h3" sx={{ fontWeight: 700 }}>
-                {counts.experience}
-              </Typography>
+              {renderContent(
+                "Experience",
+                counts.experience,
+                "Preparing experience insights..."
+              )}
             </CardContent>
           </Card>
         </Grid>
@@ -130,10 +174,11 @@ const Dashboard = () => {
         <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <Card sx={cardStyle("#ff9a9e, #fad0c4")}>
             <CardContent>
-              <Typography variant="subtitle1">Trainings</Typography>
-              <Typography variant="h3" sx={{ fontWeight: 700 }}>
-                {counts.training}
-              </Typography>
+              {renderContent(
+                "Trainings",
+                counts.training,
+                "Loading learning milestones..."
+              )}
             </CardContent>
           </Card>
         </Grid>
@@ -141,10 +186,11 @@ const Dashboard = () => {
         <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <Card sx={cardStyle("#89f7fe, #66a6ff")}>
             <CardContent>
-              <Typography variant="subtitle1">Certificates</Typography>
-              <Typography variant="h3" sx={{ fontWeight: 700 }}>
-                {counts.certifications}
-              </Typography>
+              {renderContent(
+                "Certificates",
+                counts.certifications,
+                "Verifying achievements..."
+              )}
             </CardContent>
           </Card>
         </Grid>
