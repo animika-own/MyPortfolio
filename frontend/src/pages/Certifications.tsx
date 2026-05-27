@@ -79,7 +79,7 @@ const Certifications = () => {
       </Typography>
 
       {/* TABLE */}
-      <Card sx={{ borderRadius: 3 }}>
+      <Card sx={{ borderRadius: 3, mb: 4 }}>
         <CardContent>
           <Typography variant="h6" sx={{ mb: 2 }}>
             Certification List

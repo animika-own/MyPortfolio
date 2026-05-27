@@ -85,7 +85,7 @@ const Training = () => {
       </Typography>
 
       {/* LIST */}
-      <Grid container spacing={2}>
+      <Grid container spacing={2} sx={{ mb: 4 }}>
         {trainings.map((t) => (
           <Grid key={t.id} size={{ xs: 12, md: 6 }}>
             <Card
@@ -94,6 +94,8 @@ const Training = () => {
                 boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
                 transition: "0.3s",
                 "&:hover": { transform: "translateY(-5px)" },
+                display: "flex",
+                flexDirection: "column",
               }}
             >
               <CardContent>

@@ -85,7 +85,7 @@ const Education = () => {
       </Typography>
 
       {/* LIST (TIMELINE STYLE) */}
-      <Box>
+      <Box sx={{ mb: 4 }}>
         {education.map((item) => (
           <Card
             key={item.id}
