@@ -161,7 +161,7 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       underline="hover"
                     >
-                      https://github.com/animika-own/quiz-app
+                      {p.github_link}
                     </Link>
                   </TableCell>
 
