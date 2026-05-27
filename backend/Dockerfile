@@ -5,12 +5,17 @@ WORKDIR /app
 COPY . /app
 
 RUN apt-get update && apt-get install -y \
-    unzip zip git curl libzip-dev libpq-dev \
-    && docker-php-ext-install pdo pdo_mysql pdo_pgsql pgsql zip
+    unzip \
+    zip \
+    curl \
+    libpq-dev \
+    && docker-php-ext-install zip pdo pdo_pgsql
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN composer install --no-interaction --prefer-dist
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+
+RUN chmod -R 777 storage bootstrap/cache
 
 EXPOSE 10000
 
