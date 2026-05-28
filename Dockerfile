@@ -8,13 +8,14 @@ RUN apt-get update && apt-get install -y \
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# IMPORTANT: copy backend only
-COPY backend/ /app
+COPY . /app
 
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 RUN mkdir -p storage bootstrap/cache \
     && chmod -R 777 storage bootstrap/cache
+
+RUN php artisan storage:link
 
 EXPOSE 10000
 
