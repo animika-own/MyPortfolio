@@ -84,10 +84,11 @@ Route::middleware('auth:sanctum')->group(function () {
     // ----------------------------------|
 
 
-    Route::get('/resume', [ResumeController::class, 'index']);
-    Route::post('/resume', [ResumeController::class, 'store']);
-    Route::put('/resume/{id}', [ResumeController::class, 'update']);
-    Route::delete('resume', ResumeController::class);
+    // Route::get('/resume', [ResumeController::class, 'index']);
+    // Route::post('/resume', [ResumeController::class, 'store']);
+    // Route::put('/resume/{id}', [ResumeController::class, 'update']);
+    // Route::delete('resume', ResumeController::class);
+    Route::apiResource('resume', ResumeController::class);
 
 });
 
