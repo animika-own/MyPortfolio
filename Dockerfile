@@ -10,7 +10,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 COPY . /app
 
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+RUN composer install --no-interaction --prefer-dist -vvv
 
 RUN mkdir -p storage bootstrap/cache \
     && chmod -R 777 storage bootstrap/cache
